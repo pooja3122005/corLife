@@ -1,9 +1,9 @@
 # corlife_website
-# ❤️ Corlife Website
+#  Corlife Website
 
 A modern, responsive healthcare website built using **React**, **Vite**, **Bun**, and **Tailwind CSS v4**.
 
-## 🚀 Tech Stack
+##  Tech Stack
 
 - React
 - Vite
@@ -14,7 +14,7 @@ A modern, responsive healthcare website built using **React**, **Vite**, **Bun**
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 corlife/
@@ -34,7 +34,7 @@ corlife/
 
 ---
 
-## 📦 Installation
+##  Installation
 
 ### Clone the repository
 
@@ -56,7 +56,7 @@ bun install
 
 ---
 
-## ▶️ Run the Development Server
+##  Run the Development Server
 
 ```bash
 bun run dev
@@ -70,7 +70,7 @@ http://localhost:5173
 
 ---
 
-## 🏗️ Build for Production
+##  Build for Production
 
 ```bash
 bun run build
@@ -78,7 +78,7 @@ bun run build
 
 ---
 
-## 👀 Preview Production Build
+##  Preview Production Build
 
 ```bash
 bun run preview
@@ -86,7 +86,7 @@ bun run preview
 
 ---
 
-## 🎨 Tailwind CSS Setup
+##  Tailwind CSS Setup
 
 Install Tailwind CSS:
 
@@ -117,7 +117,7 @@ Update `src/index.css`:
 
 ---
 
-## 📜 Available Scripts
+##  Available Scripts
 
 Start development server:
 
@@ -157,7 +157,7 @@ bun remove <package-name>
 
 ---
 
-## 📂 Assets
+##  Assets
 
 Store images, icons, logos, and other static resources inside:
 
