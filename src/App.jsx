@@ -1,13 +1,15 @@
+import Navbar from "./Components/Navbar";
+import Hero from "./Components/Hero";
+import StatsSection from "./Components/StatsSection";
+
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900">
-      <h1 className="text-5xl font-bold text-cyan-400">
-        Tailwind CSS is Working 🚀
-      </h1>
-    </div>
+    <>
+      <Navbar />
+      <Hero />
+      <StatsSection />
+    </>
   );
 }
 
 export default App;
-
-

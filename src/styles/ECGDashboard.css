@@ -1,0 +1,988 @@
+/* ============================
+   ECG DASHBOARD
+============================= */
+
+.ecg-dashboard {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: auto;
+  background: linear-gradient(180deg, #0b2d55 0%, #061d38 100%);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow:
+      0 30px 80px rgba(0,0,0,.35),
+      inset 0 1px 0 rgba(255,255,255,.08);
+  color: white;
+}
+
+/* ============================
+   HEADER
+============================= */
+
+.dashboard-header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:22px 28px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.dashboard-header h3{
+
+font-size:20px;
+font-weight:700;
+
+margin-top:6px;
+
+}
+
+.bed{
+
+display:inline-block;
+
+padding:6px 12px;
+
+background:#0EA5A4;
+
+border-radius:50px;
+
+font-size:12px;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+}
+
+.live{
+
+display:flex;
+align-items:center;
+gap:10px;
+
+font-weight:700;
+font-size:15px;
+
+color:#4ADE80;
+
+}
+
+.dot{
+
+width:12px;
+height:12px;
+
+border-radius:50%;
+
+background:#4ADE80;
+
+animation:blink 1s infinite;
+
+}
+
+@keyframes blink{
+
+0%,100%{
+
+opacity:1;
+
+}
+
+50%{
+
+opacity:.25;
+
+}
+
+}
+
+/* ============================
+   FLOATING CARDS
+============================= */
+
+.float-card{
+
+position:absolute;
+
+background:white;
+
+color:#1F2937;
+
+border-radius:18px;
+
+padding:14px 18px;
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.18);
+
+z-index:30;
+
+transition:.35s;
+
+}
+
+.float-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+}
+
+.top-card{
+
+top:30px;
+
+right:-35px;
+
+animation:float1 4s ease-in-out infinite;
+
+}
+
+.bottom-card{
+
+left:-30px;
+
+bottom:55px;
+
+animation:float2 5s ease-in-out infinite;
+
+}
+
+.icon{
+
+width:42px;
+height:42px;
+
+display:flex;
+
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+font-size:18px;
+
+}
+
+.success{
+
+background:#DCFCE7;
+
+color:#16A34A;
+
+}
+
+.doctor{
+
+background:#DBEAFE;
+
+color:#2563EB;
+
+}
+
+.float-card h4{
+
+font-size:15px;
+
+font-weight:700;
+
+margin-bottom:3px;
+
+}
+
+.float-card p{
+
+font-size:13px;
+
+color:#6B7280;
+
+}
+
+@keyframes float1{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+}
+
+@keyframes float2{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(10px);
+
+}
+
+}
+
+/* ============================
+   WAVES SECTION
+============================= */
+
+.wave-section{
+
+padding:28px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+}
+
+.wave-row{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+}
+
+.label{
+
+width:75px;
+
+font-size:13px;
+
+font-weight:700;
+
+letter-spacing:.5px;
+
+}
+
+.ecg-label{
+
+color:#4ADE80;
+
+}
+
+.spo2-label{
+
+color:#38BDF8;
+
+}
+
+.resp-label{
+
+color:#FACC15;
+
+}
+
+.wave{
+
+flex:1;
+
+height:74px;
+
+overflow:visible;
+
+}
+/* ==========================================
+   SVG WAVE STYLES
+========================================== */
+
+.wave path{
+    fill:none;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+/* ECG */
+
+.ecg-path{
+
+    stroke:#2AF598;
+    stroke-width:3;
+
+    filter:
+        drop-shadow(0 0 6px #2AF598)
+        drop-shadow(0 0 12px #2AF598);
+
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+
+    animation:
+        ecgMove 4s linear infinite,
+        ecgGlow 2s ease-in-out infinite;
+}
+
+/* Pleth */
+
+.pleth-path{
+
+    stroke:#49C8FF;
+    stroke-width:3;
+
+    filter:
+        drop-shadow(0 0 5px #49C8FF);
+
+    stroke-dasharray:700;
+    stroke-dashoffset:700;
+
+    animation:
+        plethMove 5s linear infinite;
+}
+
+/* Resp */
+
+.resp-path{
+
+    stroke:#FFD84D;
+    stroke-width:3;
+
+    filter:
+        drop-shadow(0 0 5px #FFD84D);
+
+    stroke-dasharray:700;
+    stroke-dashoffset:700;
+
+    animation:
+        respMove 6s linear infinite;
+}
+
+
+/* ==========================================
+   ECG LINE DRAWING
+========================================== */
+
+@keyframes ecgMove{
+
+0%{
+
+stroke-dashoffset:900;
+
+}
+
+100%{
+
+stroke-dashoffset:0;
+
+}
+
+}
+
+
+@keyframes plethMove{
+
+0%{
+
+stroke-dashoffset:700;
+
+}
+
+100%{
+
+stroke-dashoffset:0;
+
+}
+
+}
+
+
+@keyframes respMove{
+
+0%{
+
+stroke-dashoffset:700;
+
+}
+
+100%{
+
+stroke-dashoffset:0;
+
+}
+
+}
+
+
+/* ==========================================
+   GLOW EFFECT
+========================================== */
+
+@keyframes ecgGlow{
+
+0%,100%{
+
+filter:
+drop-shadow(0 0 4px #2AF598)
+drop-shadow(0 0 10px #2AF598);
+
+}
+
+50%{
+
+filter:
+drop-shadow(0 0 10px #2AF598)
+drop-shadow(0 0 20px #2AF598)
+drop-shadow(0 0 30px #2AF598);
+
+}
+
+}
+
+
+/* ==========================================
+   MONITOR GRID
+========================================== */
+
+.wave{
+
+position:relative;
+
+background:
+linear-gradient(
+rgba(255,255,255,.05) 1px,
+transparent 1px),
+
+linear-gradient(
+90deg,
+rgba(255,255,255,.05) 1px,
+transparent 1px);
+
+background-size:
+
+100% 20px,
+20px 100%;
+
+border-radius:14px;
+
+padding:4px;
+
+}
+
+
+/* ==========================================
+   SCANNING LIGHT
+========================================== */
+
+.wave::after{
+
+content:"";
+
+position:absolute;
+
+left:-35%;
+
+top:0;
+
+width:35%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.15),
+
+transparent
+
+);
+
+animation:scanner 3.5s linear infinite;
+
+}
+
+@keyframes scanner{
+
+0%{
+
+left:-35%;
+
+}
+
+100%{
+
+left:120%;
+
+}
+
+}
+
+
+/* ==========================================
+   WAVE CONTAINER
+========================================== */
+
+.wave-row{
+
+position:relative;
+
+transition:.4s;
+
+}
+
+.wave-row:hover{
+
+transform:scale(1.02);
+
+}
+
+
+/* ==========================================
+   CHANNEL LABELS
+========================================== */
+
+.label{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+height:30px;
+
+border-radius:8px;
+
+font-size:12px;
+
+font-weight:700;
+
+letter-spacing:.8px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(6px);
+
+}
+
+.ecg-label{
+
+color:#2AF598;
+
+}
+
+.spo2-label{
+
+color:#49C8FF;
+
+}
+
+.resp-label{
+
+color:#FFD84D;
+
+}
+
+
+/* ==========================================
+   LIVE PULSE
+========================================== */
+
+.live{
+
+animation:heartbeat 1.4s infinite;
+
+}
+
+@keyframes heartbeat{
+
+0%{
+
+transform:scale(1);
+
+}
+
+30%{
+
+transform:scale(1.08);
+
+}
+
+60%{
+
+transform:scale(.95);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+/* ===========================================
+   VITALS SECTION
+=========================================== */
+
+.vitals-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    padding:24px;
+
+}
+
+.vital-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.vital-card:hover{
+
+    transform:translateY(-8px);
+
+    background:rgba(255,255,255,.12);
+
+    box-shadow:
+
+        0 20px 40px rgba(0,0,0,.28),
+
+        inset 0 1px 0 rgba(255,255,255,.1);
+
+}
+
+.vital-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:100%;
+
+    height:100%;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.18),
+
+        transparent
+
+    );
+
+    transition:.8s;
+
+}
+
+.vital-card:hover::before{
+
+    left:100%;
+
+}
+
+/* ============================= */
+
+.vital-icon{
+
+    font-size:22px;
+
+    margin-bottom:14px;
+
+}
+
+/* Colors */
+
+.red{
+
+    color:#ff5a5f;
+
+}
+
+.blue{
+
+    color:#38bdf8;
+
+}
+
+.green{
+
+    color:#22c55e;
+
+}
+
+.yellow{
+
+    color:#facc15;
+
+}
+
+.orange{
+
+    color:#fb923c;
+
+}
+
+/* ============================= */
+
+.vital-card h5{
+
+    font-size:13px;
+
+    color:#C8D6E5;
+
+    margin-bottom:8px;
+
+    letter-spacing:.5px;
+
+}
+
+.vital-card h2{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:white;
+
+    line-height:1;
+
+}
+
+.vital-card span{
+
+    font-size:13px;
+
+    color:#A9B7C6;
+
+}
+
+/* ============================= */
+
+.vital-card.full{
+
+    grid-column:1/-1;
+
+}
+
+/* ===========================================
+   NUMBER ANIMATION
+=========================================== */
+
+.vital-card h2{
+
+    animation:numberPulse 2s infinite;
+
+}
+
+@keyframes numberPulse{
+
+0%,100%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.06);
+
+}
+
+}
+
+/* ===========================================
+   STATUS BAR
+=========================================== */
+
+.dashboard-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 24px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.04);
+
+    font-size:13px;
+
+}
+
+.status-ok{
+
+    color:#4ADE80;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.status-dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#4ADE80;
+
+    animation:blink 1s infinite;
+
+}
+
+.footer-right{
+
+    color:#A7B6C6;
+
+}
+
+/* ===========================================
+   CARD ENTRY ANIMATION
+=========================================== */
+
+.vital-card{
+
+    animation:cardAppear .8s ease both;
+
+}
+
+.vital-card:nth-child(1){
+
+    animation-delay:.1s;
+
+}
+
+.vital-card:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+.vital-card:nth-child(3){
+
+    animation-delay:.3s;
+
+}
+
+.vital-card:nth-child(4){
+
+    animation-delay:.4s;
+
+}
+
+.vital-card:nth-child(5){
+
+    animation-delay:.5s;
+
+}
+
+@keyframes cardAppear{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ===========================================
+   RESPONSIVE
+=========================================== */
+
+@media(max-width:768px){
+
+.vitals-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.vital-card.full{
+
+grid-column:auto;
+
+}
+
+.float-card{
+
+display:none;
+
+}
+
+.dashboard-header{
+
+padding:18px;
+
+}
+
+.wave-section{
+
+padding:18px;
+
+}
+
+}
