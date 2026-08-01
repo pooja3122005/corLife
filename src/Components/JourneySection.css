@@ -60,7 +60,7 @@
   font-family: var(--sans);
   font-size: 1.0625rem;
   line-height: 1.72;
-  color: var(--ink-soft);
+  color: var(--teal-deep);
   max-width: 680px;
   margin: 0 auto;
   animation: jFadeUp 0.7s var(--ease-out) 0.18s both;
@@ -157,7 +157,7 @@
   font-family: var(--mono);
   font-size: 0.5rem;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.55);
   text-transform: uppercase;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -200,7 +200,7 @@
 .q-val {
   font-family: var(--mono);
   font-size: 0.625rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.7);
   text-align: right;
 }
 
@@ -256,7 +256,7 @@
 .pni-num {
   font-family: var(--mono);
   font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.32);
+  color: rgba(255, 255, 255, 0.6);
   flex-shrink: 0;
   min-width: 22px;
   letter-spacing: 0.04em;
@@ -278,7 +278,7 @@
 .pni-label {
   font-family: var(--sans);
   font-size: 0.8125rem;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.65);
   flex: 1;
   transition: color 0.2s;
 }
@@ -289,11 +289,11 @@
 }
 
 .pni-done .pni-label {
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .pni-next .pni-label {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 /* Phone — footer progress */
@@ -317,7 +317,7 @@
 
 .pf-label span {
   font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.6);
   font-weight: 400;
   margin-left: 2px;
 }
@@ -401,7 +401,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .journey-panel-body {
@@ -500,7 +500,7 @@
   font-family: var(--mono);
   font-size: 0.875rem;
   font-weight: 700;
-  color: var(--ink-soft);
+  color: var(--ink-text);
   transition: color 0.25s;
 }
 
@@ -655,7 +655,7 @@
 .cmd-vkey {
   font-family: var(--mono);
   font-size: 0.4rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.65);
   text-transform: uppercase;
 }
 
@@ -744,7 +744,7 @@
 .cmd-bed-id {
   font-family: var(--mono);
   font-size: 0.4375rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .cmd-bed-wave {
@@ -767,7 +767,7 @@
 .cmd-bed-ews {
   font-family: var(--mono);
   font-size: 0.4375rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 /* Discharge Checklist */
@@ -820,7 +820,7 @@
 .cmd-footer-note {
   font-family: var(--sans);
   font-size: 0.4375rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -898,13 +898,13 @@
 
 .stage-meta {
   font-family: var(--mono);
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--ink-soft);
+  color: var(--navy);
   text-transform: uppercase;
   margin: 0 0 6px;
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 .meta-sep { margin: 0 2px; }
@@ -926,8 +926,8 @@
 
 .stage-desc {
   font-family: var(--sans);
-  font-size: 0.71875rem;
-  color: var(--ink-soft);
+  font-size: 1.0rem;
+  color: var(--ink-text);
   line-height: 1.56;
   margin: 0 0 11px;
 }
@@ -953,7 +953,7 @@
   font-weight: 700;
   flex-shrink: 0;
   background: var(--line-soft);
-  color: var(--ink-soft);
+  color: var(--ink);
   transition: all 0.3s var(--ease);
 }
 
@@ -981,7 +981,7 @@
 .status-time {
   font-family: var(--mono);
   font-size: 0.5625rem;
-  color: var(--ink-soft);
+  color: var(--ink);
   display: block;
 }
 
@@ -1139,7 +1139,7 @@
   font-size: 0.5625rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
 }
 
@@ -1220,7 +1220,7 @@
 .sp-vkey {
   font-family: var(--mono);
   font-size: 0.4375rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.6);
   margin-top: 2px;
   text-transform: uppercase;
 }
@@ -1315,7 +1315,7 @@
   font-family: var(--mono);
   font-size: 0.5rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -1343,7 +1343,7 @@
 .sp-bed-ews {
   font-family: var(--mono);
   font-size: 0.5rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
 }
 
@@ -1376,7 +1376,7 @@
 .sp-check-label {
   font-family: var(--sans);
   font-size: 0.6875rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.9);
   flex: 1;
 }
 
@@ -1421,7 +1421,7 @@
   gap: 6px;
   font-family: var(--sans);
   font-size: 0.5625rem;
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.7);
   margin-top: auto;
 }
 
@@ -1463,7 +1463,7 @@
 @media (max-width: 640px) {
   .journey-section  { padding: 2.5rem 0.75rem 3rem; }
   .journey-title    { font-size: 1.75rem; }
-  .journey-subtitle { font-size: 0.9375rem; }
+  .journey-subtitle { font-size: 0.9375rem; color: var(--teal-deep); }
   .journey-stages   { min-width: 600px; }
   .stage-visual     { height: 80px; }
 }

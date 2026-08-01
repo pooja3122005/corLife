@@ -1,26 +1,27 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 :root {
-  /* Brand palette — official Corlife brand sheet */
-  --navy:      #003B73;  /* Corlife Navy — wordmark, depth */
+  /* Brand palette â€” official Corlife brand sheet */
+  --navy:      #003B73;  /* Corlife Navy â€” wordmark, depth */
   --navy-2:    #084785;
   --midnight:  #021E3C;
-  --teal:      #00A6A6;  /* Vital Teal — titles, icons, links */
+  --teal:      #00A6A6;  /* Vital Teal â€” titles, icons, links */
   --teal-deep: #007E7E;
-  --gold:      #D9971E;  /* Heart Gold — the heart, accents */
+  --gold:      #D9971E;  /* Heart Gold â€” the heart, accents */
   --gold-soft: #E9B04C;
   --gold-deep: #B4801A;
 
-  /* Neutrals — warm paper, from the brand sheet */
+  /* Neutrals â€” warm paper, from the brand sheet */
   --mist:      #F3F0E9;
   --mist-2:    #FAF8F4;
   --white:     #FDFCFA;  /* paper */
-  --ink:       #0F2540;  /* Ink — body text */
-  --ink-soft:  #6B7684;  /* brand gray */
+  --ink:       #0F2540;  /* Ink â€” body text */
+  --ink-soft:  #5ca8ac;
+  --ink-text:   #0F2540;  /* brand gray */
   --line:      #E3E0D8;
   --line-soft: #ECEAE3;
 
-  /* Type — brand faces: Cormorant Garamond (headings, matches the logo),
+  /* Type â€” brand faces: Cormorant Garamond (headings, matches the logo),
      Poppins (body & numerals), IBM Plex Mono (device readouts only) */
   --serif:  "Cormorant Garamond", Georgia, serif;
   --sans:   "Poppins", system-ui, -apple-system, sans-serif;
@@ -149,3 +150,6 @@ stroke-dashoffset:0;
 }
 
 }
+
+
+

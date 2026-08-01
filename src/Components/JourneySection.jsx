@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import "./JourneySection.css";
 import ambulance from "../assets/ambulance.png";
 import er from "../assets/er.png";
@@ -19,7 +19,7 @@ const stages = [
     status: "Data captured",
     navLabel: "Ambulance",
     visualClass: "sv-ambulance",
-    img:ambulance,
+    img: ambulance,
   },
   {
     id: 2,
@@ -32,7 +32,7 @@ const stages = [
     status: "Triage complete",
     navLabel: "Emergency room",
     visualClass: "sv-er",
-    img:er,
+    img: er,
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ const stages = [
       "Bedside monitors feed the same dashboard, so trends stay continuous through every transfer — no gaps, no starting over.",
     status: "Monitoring",
     navLabel: "ICU & ward",
-    img:icu,
+    img: icu,
   },
   {
     id: 4,
@@ -57,7 +57,7 @@ const stages = [
     status: "Discharged",
     navLabel: "Discharge",
     visualClass: "sv-discharge",
-    img:discharge,
+    img: discharge,
   },
   {
     id: 5,
@@ -70,7 +70,7 @@ const stages = [
     status: "At home",
     navLabel: "Home",
     visualClass: "sv-home",
-    img:home,
+    img: home,
   },
 ];
 
@@ -127,80 +127,6 @@ function HomeIcon({ active }) {
     </svg>
   );
 }
-const STAGE_ICONS = [AmbulanceIcon, ERIcon, ICUIcon, DischargeIcon, HomeIcon];
-
-/* ─── SVG visuals for right-side cards ──────────────────────────────── */
-function AmbulanceSVG() {
-  return (
-    <svg className="sv-art" viewBox="0 0 140 80" fill="none">
-      <rect x="0" y="58" width="140" height="22" fill="rgba(255,255,255,0.05)" rx="2"/>
-      <line x1="20" y1="69" x2="38" y2="69" stroke="rgba(255,255,255,0.15)" strokeWidth="2" strokeDasharray="6 4"/>
-      <line x1="58" y1="69" x2="76" y2="69" stroke="rgba(255,255,255,0.15)" strokeWidth="2" strokeDasharray="6 4"/>
-      <line x1="96" y1="69" x2="114" y2="69" stroke="rgba(255,255,255,0.15)" strokeWidth="2" strokeDasharray="6 4"/>
-      <rect x="28" y="30" width="76" height="28" rx="4" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
-      <path d="M100 38 L100 58 L114 58 L114 44 L107 38 Z" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.18)" strokeWidth="1"/>
-      <rect x="58" y="36" width="16" height="4" rx="1" fill="rgba(239,68,68,0.75)"/>
-      <rect x="64" y="30" width="4" height="16" rx="1" fill="rgba(239,68,68,0.75)"/>
-      <circle cx="48" cy="58" r="7" fill="rgba(30,30,40,0.6)" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5"/>
-      <circle cx="90" cy="58" r="7" fill="rgba(30,30,40,0.6)" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5"/>
-      <path d="M118 22 Q122 15 118 8" stroke="rgba(0,166,166,0.65)" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
-      <path d="M123 24 Q130 15 123 6" stroke="rgba(0,166,166,0.45)" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
-      <circle cx="116" cy="15" r="2.5" fill="rgba(0,166,166,0.8)"/>
-    </svg>
-  );
-}
-function ErSVG() {
-  return (
-    <svg className="sv-art" viewBox="0 0 140 80" fill="none">
-      <rect x="22" y="10" width="96" height="52" rx="4" fill="rgba(0,59,115,0.55)" stroke="rgba(0,166,166,0.4)" strokeWidth="1.5"/>
-      <rect x="26" y="14" width="88" height="40" rx="2" fill="rgba(2,30,60,0.85)"/>
-      <rect x="62" y="62" width="16" height="6" rx="2" fill="rgba(255,255,255,0.12)"/>
-      <line x1="26" y1="34" x2="114" y2="34" stroke="rgba(255,255,255,0.04)" strokeWidth="0.5"/>
-      <polyline points="26,34 45,34 52,18 58,48 64,34 76,34 82,22 88,46 94,34 114,34"
-        fill="none" stroke="#00A6A6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-      <circle cx="88" cy="46" r="2.5" fill="#00A6A6"/>
-      <text x="30" y="26" fontFamily="monospace" fontSize="7" fill="rgba(0,166,166,0.65)">96 BPM</text>
-    </svg>
-  );
-}
-function IcuSVG() {
-  return (
-    <svg className="sv-art" viewBox="0 0 140 80" fill="none">
-      <rect x="12" y="46" width="116" height="16" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)" strokeWidth="1"/>
-      <rect x="12" y="30" width="54" height="18" rx="3" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.1)" strokeWidth="1"/>
-      <ellipse cx="39" cy="39" rx="14" ry="8" fill="rgba(255,255,255,0.1)"/>
-      <line x1="100" y1="12" x2="100" y2="46" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5"/>
-      <rect x="84" y="6" width="32" height="22" rx="3" fill="rgba(0,59,115,0.75)" stroke="rgba(0,166,166,0.5)" strokeWidth="1"/>
-      <polyline points="86,17 89,17 92,11 94,22 96,17 100,17 103,13 105,20 108,17 114,17"
-        fill="none" stroke="#00A6A6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  );
-}
-function DischargeSVG() {
-  return (
-    <svg className="sv-art" viewBox="0 0 140 80" fill="none">
-      <rect x="50" y="16" width="40" height="48" rx="12" fill="rgba(0,59,115,0.65)" stroke="rgba(0,166,166,0.5)" strokeWidth="1.5"/>
-      <rect x="54" y="20" width="32" height="40" rx="9" fill="rgba(2,30,60,0.9)"/>
-      <path d="M65 42 C65 39 68 37 70 40 C72 37 75 39 75 42 C75 45 70 48 70 48 C70 48 65 45 65 42Z" fill="rgba(217,151,30,0.8)"/>
-      <text x="57" y="32" fontFamily="monospace" fontSize="5.5" fill="rgba(0,166,166,0.8)">72 bpm</text>
-      <circle cx="97" cy="18" r="8" fill="rgba(0,166,166,0.15)" stroke="rgba(0,166,166,0.5)" strokeWidth="1"/>
-      <path d="M93 18 L96.5 21.5 L101.5 14" stroke="#00A6A6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  );
-}
-function HomeSVG() {
-  return (
-    <svg className="sv-art" viewBox="0 0 140 80" fill="none">
-      <path d="M35 72 L35 42 L70 16 L105 42 L105 72 Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5"/>
-      <path d="M28 46 L70 12 L112 46" fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="2" strokeLinejoin="round"/>
-      <rect x="58" y="52" width="24" height="20" rx="2" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.14)" strokeWidth="1"/>
-      <rect x="39" y="44" width="16" height="14" rx="2" fill="rgba(217,151,30,0.12)" stroke="rgba(217,151,30,0.28)" strokeWidth="1"/>
-      <rect x="85" y="44" width="16" height="14" rx="2" fill="rgba(217,151,30,0.12)" stroke="rgba(217,151,30,0.28)" strokeWidth="1"/>
-      <circle cx="17" cy="27" r="2.5" fill="rgba(0,166,166,0.65)"/>
-    </svg>
-  );
-}
-const stageVisuals = [AmbulanceSVG, ErSVG, IcuSVG, DischargeSVG, HomeSVG];
 
 /* ═══════════════════════════════════════════════════════════════════════
    STAGE PANELS — left phone mockup content changes per stage
@@ -259,7 +185,7 @@ function AmbulancePanel() {
 
 /* ── Stage 02: ER Triage — EWS bar chart ── */
 const erPatients = [
-  { id: "CJ104", ews: 9, label: "RESUS",     color: "#ef4444", pct: 93 },
+  { id: "CJ104", ews: 9, label: "RESUS",    color: "#ef4444", pct: 93 },
   { id: "CJ087", ews: 5, label: "STABILISE", color: "#f59e0b", pct: 54 },
   { id: "CJ121", ews: 3, label: "ENHANCED",  color: "#84cc16", pct: 32 },
   { id: "CJ092", ews: 1, label: "STANDARD",  color: "#22c55e", pct: 11 },
@@ -468,20 +394,40 @@ export default function JourneySection() {
   const ActivePanel = STAGE_PANELS[activeIdx];
 
   return (
-    <section className="journey-section">
-      {/* ── HEADER ── */}
-      <div className="journey-header">
-        <p className="journey-label">One connected ecosystem</p>
-        <h2 className="journey-title">
-          Care that travels with the patient &mdash;
-          <br />
-          <span className="journey-title-accent">through every handoff.</span>
-        </h2>
-        <p className="journey-subtitle">
-          From the ambulance to the living room, Corlife holds one continuous
-          line on every patient. Each stage inherits the last stage&rsquo;s
-          context, so no handoff ever drops the signal.
-        </p>
+    <section id="care-journey" className="journey-section scroll-mt-28">
+      {/* ── HEADER CONTAINER WITH FIXED LEFT ALIGNMENT WRAPPER ── */}
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
+        {/* Badge container with full width constraint matching header alignment */}
+        <div className="w-full flex justify-start mb-6">
+          <div
+            className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase px-3.5 py-1.5 rounded-full border"
+            style={{
+              color: "var(--teal-deep)",
+              borderColor: "var(--line)",
+              backgroundColor: "rgba(255,255,255,0.8)",
+            }}
+          >
+            <span
+              className="w-2 h-2 rounded-full"
+              style={{ backgroundColor: "var(--gold)" }}
+            />
+            journey
+          </div>
+        </div>
+
+        {/* Main title and subtitle centered */}
+        <div className="journey-header text-center">
+          <h2 className="journey-title">
+            Care that travels with the patient &mdash;
+            <br />
+            <span className="journey-title-accent">through every handoff.</span>
+          </h2>
+          <p className="journey-subtitle mx-auto">
+            From the ambulance to the living room, Corlife holds one continuous
+            line on every patient. Each stage inherits the last stage&rsquo;s
+            context, so no handoff ever drops the signal.
+          </p>
+        </div>
       </div>
 
       {/* ── MAIN LAYOUT ── */}
@@ -610,4 +556,3 @@ export default function JourneySection() {
     </section>
   );
 }
-
