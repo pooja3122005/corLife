@@ -1,7 +1,74 @@
-﻿import { FaArrowRight, FaHeart } from "react-icons/fa";
-import heroImage from "../assets/hero.png";
+import { useEffect } from "react";
+import { FaArrowRight } from "react-icons/fa";
+import ECGDashboard from "./ECGDashboard";
+
+const stats = [
+  { value: 94, suffix: "%", label: "of deteriorations flagged before escalation" },
+  { value: 24, suffix: "/7", label: "clinician-reviewed monitoring, every day of the year" },
+  { value: 8, suffix: "s", label: "median time from anomaly to care-team alert" },
+  { value: 40, suffix: "+", label: "hospitals and home-care programs live on Corlife" },
+];
 
 export default function Hero({ onRequestDemo }) {
+  useEffect(() => {
+    const counters = document.querySelectorAll(".stat-num");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const animateCounter = (element) => {
+      const target = Number(element.dataset.count || 0);
+
+      if (prefersReducedMotion) {
+        element.textContent = target;
+        return;
+      }
+
+      const duration = 1200;
+      const start = performance.now();
+
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const currentValue = Math.round(target * eased);
+
+        element.textContent = currentValue;
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          element.textContent = target;
+        }
+      };
+
+      requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const element = entry.target;
+          if (element.dataset.animated === "true") return;
+
+          element.dataset.animated = "true";
+          animateCounter(element);
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    counters.forEach((counter) => {
+      if (prefersReducedMotion) {
+        counter.dataset.animated = "true";
+        counter.textContent = Number(counter.dataset.count || 0);
+      } else {
+        counter.textContent = "0";
+        observer.observe(counter);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="home" className="corlife-hero relative overflow-hidden min-h-[620px] lg:min-h-[680px] flex items-center scroll-mt-20">
       <style>{`
@@ -21,18 +88,14 @@ export default function Hero({ onRequestDemo }) {
         }
       `}</style>
 
-      {/* Right side image section: Hidden on mobile/tablet, visible as a split-screen image on large screens (lg:) */}
-      <div className="hidden lg:flex absolute top-0 right-0 w-[52%] h-full justify-end items-stretch pointer-events-none z-0">
-        <div className="relative w-full h-full overflow-hidden rounded-tl-[400px]">
-          <img
-            src={heroImage}
-            alt="Corlife Medical Device Set"
-            className="w-full h-full object-cover object-center pointer-events-auto"
-          />
+      <div className="hidden lg:flex absolute top-0 right-0 w-[52%] h-[57%] justify-end items-stretch pointer-events-none z-0">
+        <div className="relative w-full h-full overflow-hidden ">
+          <div className="w-full justify-center items-center h-full flex pointer-events-auto">
+            <ECGDashboard />
+          </div>
         </div>
       </div>
 
-      {/* Left side content section aligned tightly to the left edge with matching padding */}
       <div className="relative z-10 w-full pl-6 sm:pl-12 lg:pl-16 xl:pl-24 pr-6 lg:pr-12 py-16">
         <div className="grid lg:grid-cols-2 items-center gap-12">
           <div className="relative space-y-8 max-w-xl animate-[fadeInLeft_0.8s_ease] py-6">
@@ -59,20 +122,10 @@ export default function Hero({ onRequestDemo }) {
 
             <div className="space-y-2 pt-4">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif leading-[1.12] text-[var(--midnight)] tracking-tight">
-                Care
+                The signal never <span className="text-[var(--gold)]">stops.</span>
                 <br />
-                without
-                <br />
-                <span className="text-[var(--gold)]">a pause.</span>
+                Neither do we.
               </h1>
-            </div>
-
-            <div className="flex items-center gap-3 py-1">
-              <div className="w-24 h-[1.5px] bg-[var(--gold)]" />
-              <FaHeart className="text-[var(--gold)] text-xs" />
-              <span className="text-[var(--gold)] text-base sm:text-lg font-normal">
-                Continuous remote cardiac &amp; vitals monitoring
-              </span>
             </div>
 
             <p className="text-[var(--ink-soft)] text-base sm:text-lg leading-relaxed max-w-md font-medium">
@@ -95,6 +148,20 @@ export default function Hero({ onRequestDemo }) {
 
           <div className="hidden lg:block h-full" />
         </div>
+
+        <section className="stats" aria-label="Corlife by the numbers">
+          <div className="wrap stats-grid">
+            {stats.map((stat) => (
+              <div className="stat" key={stat.label}>
+                <div className="stat-value">
+                  <span className="stat-num" data-count={stat.value}>0</span>
+                  <span className="stat-suffix">{stat.suffix}</span>
+                </div>
+                <span className="stat-label">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </section>
   );

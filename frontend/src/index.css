@@ -1,0 +1,330 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-garamond: "Cormorant Garamond", Georgia, serif;
+  --font-poppins: "Poppins", system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  /* Brand palette — official Corlife brand sheet */
+  --navy:      #003B73;  /* Corlife Navy — wordmark, depth */
+  --navy-2:    #084785;
+  --midnight:  #021E3C;
+  --teal:      #00A6A6;  /* Vital Teal — titles, icons, links */
+  --teal-deep: #007E7E;
+  --gold:      #D9971E;  /* Heart Gold — the heart, accents */
+  --gold-soft: #E9B04C;
+  --gold-deep: #B4801A;
+
+  /* Neutrals — warm paper, from the brand sheet */
+  --mist:      #F3F0E9;
+  --mist-2:    #FAF8F4;
+  --white:     #FDFCFA;  /* paper */
+  --ink:       #0F2540;  /* Ink — body text */
+  --ink-soft:  #5ca8ac;
+  --ink-text:   #0F2540;  /* brand gray */
+  --line:      #E3E0D8;
+  --line-soft: #ECEAE3;
+
+  /* Type — brand faces: Cormorant Garamond (headings, matches the logo),
+     Poppins (body & numerals), IBM Plex Mono (device readouts only) */
+  --serif:  "Cormorant Garamond", Georgia, serif;
+  --sans:   "Poppins", system-ui, -apple-system, sans-serif;
+  --mono:   "IBM Plex Mono", ui-monospace, monospace;
+
+  --maxw: 1200px;
+  --radius: 16px;
+  --radius-sm: 10px;
+
+  --ease: cubic-bezier(.4, 0, .1, 1);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);      /* cinematic decelerate */
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1); /* playful overshoot */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--mist-2);
+  color: var(--ink);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+.corlife-header {
+  background:
+    radial-gradient(780px 340px at 0% 0%, rgba(0, 166, 166, 0.08), transparent 68%),
+    radial-gradient(680px 320px at 100% 0%, rgba(217, 151, 30, 0.08), transparent 70%),
+    rgba(250, 248, 244, 0.94);
+  border-bottom: 1px solid var(--line-soft);
+  box-shadow: 0 10px 30px -24px rgba(6, 23, 46, 0.35);
+}
+
+.corlife-hero {
+  position: relative;
+  background:
+    radial-gradient(1100px 500px at 18% 0%, rgba(0, 166, 166, 0.08), transparent 58%),
+    radial-gradient(900px 480px at 82% 100%, rgba(217, 151, 30, 0.06), transparent 55%),
+    var(--mist-2);
+  padding: 84px 0 96px;
+  overflow: hidden;
+}
+
+.corlife-stats-section {
+  position: relative;
+  background:
+    radial-gradient(1000px 500px at 18% 0%, rgba(0, 166, 166, 0.06), transparent 58%),
+    radial-gradient(900px 480px at 82% 100%, rgba(217, 151, 30, 0.05), transparent 55%),
+    var(--mist-2);
+}
+
+.corlife-nav-link {
+  position: relative;
+}
+
+.corlife-nav-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s var(--ease);
+}
+
+.corlife-nav-link.active::before {
+  transform: scaleX(1);
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.stats {
+  width: 100%;
+  margin-top: 2.75rem;
+  padding-top: 0.5rem;
+}
+
+.wrap {
+  max-width: 1600px;
+  margin: 0 auto;
+  width: calc(100% - 1.5rem);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid rgba(0, 59, 115, 0.08);
+  border-bottom: 1px solid rgba(0, 59, 115, 0.08);
+  background: transparent;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 220px;
+  padding: 2rem 1.5rem 1.75rem;
+  text-align: center;
+  background: transparent;
+  border-left: 1px solid rgba(0, 59, 115, 0.12);
+  position: relative;
+}
+
+.stat:first-child {
+  border-left: none;
+}
+
+.stat-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.18rem;
+  color: var(--navy);
+  font-family: var(--sans);
+  line-height: 1;
+}
+
+.stat-num {
+  font-size: clamp(3rem, 4vw, 6rem);
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  color: var(--navy);
+}
+
+.stat-suffix {
+  font-size: clamp(2rem, 2.5vw, 4rem);
+  line-height: 1;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+.stat-label {
+  margin-top: 1rem;
+  max-width: 15ch;
+  font-size: clamp(1rem, 1.15vw, 1.55rem);
+  line-height: 1.35;
+  color: var(--ink-text);
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: none;
+    border-bottom: none;
+  }
+
+  .stat {
+    border-left: none;
+    border-top: 1px solid rgba(0, 59, 115, 0.12);
+  }
+
+  .stat:nth-child(-n + 2) {
+    border-top: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat {
+    min-height: 160px;
+    padding: 1.5rem 1rem 1.25rem;
+    border-top: 1px solid rgba(0, 59, 115, 0.12);
+  }
+
+  .stat:first-child {
+    border-top: none;
+  }
+}
+
+.ecg-line{
+    stroke-dasharray:1000;
+    stroke-dashoffset:1000;
+    animation:ecg 4s linear infinite;
+}
+
+@keyframes ecg{
+
+0%{
+stroke-dashoffset:1000;
+}
+
+100%{
+stroke-dashoffset:0;
+}
+
+}
+
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.animate-float {
+  animation: float 4.5s ease-in-out infinite;
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Layout helpers for sticky-but-not-absolute footer */
+html, body, #root {
+  min-height: 100%;
+}
+body {
+
+  margin: 0;
+}
+/* The app root (.app-root) should be a column flex so footer sits at the end */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1 0 auto;
+}
+
+/* Remove top spacing on non-home pages so page content sits directly under the sticky header.
+   The Home page keeps its hero spacing (do not apply this rule there). */
+.app-main.no-gap > :first-child {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  scroll-margin-top: 0 !important;
+}
+
+.app-root > footer {
+  position: static !important;
+  width: 100%;
+  flex-shrink: 0;
+  animation: none !important;
+  transform: none;
+}

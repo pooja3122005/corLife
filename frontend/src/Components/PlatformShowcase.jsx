@@ -21,34 +21,34 @@ const FEATURES = [
     title: 'Continuous, not snapshot',
     icon: Activity,
     description:
-      'Beat-by-beat ECG, SpOâ‚‚, respiration, temperature and activity â€” streamed and analysed around the clock, not sampled at a clinic visit.',
+      'Beat-by-beat ECG, SpO₂, respiration, temperature and activity — streamed and analysed around the clock, not sampled at a clinic visit.',
   },
   {
     id: 'alerts',
     title: 'Alerts that reach a human',
     icon: Clock,
     description:
-      'Our algorithms surface what matters and route it to a monitoring nurse in seconds â€” filtering noise so real events never wait in a queue.',
+      'Our algorithms surface what matters and route it to a monitoring nurse in seconds — filtering noise so real events never wait in a queue.',
   },
   {
     id: 'home',
     title: 'Hospital grade, at home',
     icon: Home,
     description:
-      'The wearable is clinician-prescribed and clinically validated â€” the difference between a consumer tracker and a medical device.',
+      'The wearable is clinician-prescribed and clinically validated — the difference between a consumer tracker and a medical device.',
   },
   {
     id: 'records',
     title: 'Records clinicians trust',
     icon: FileText,
     description:
-      'Every trend, event and intervention lands in a structured record that plugs into your EHR â€” audit-ready, not locked in an app.',
+      'Every trend, event and intervention lands in a structured record that plugs into your EHR — audit-ready, not locked in an app.',
   },
 ];
 
 const METRICS = [
   {
-    label: 'SpOâ‚‚',
+    label: 'SpO₂',
     icon: Droplets,
     posClass: 'top-[8%] left-[2%]',
     delay: '0s',

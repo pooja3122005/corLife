@@ -190,7 +190,7 @@ export default function OutcomesSection() {
           font-family: var(--sans);
           position: relative;
           background: var(--mist-2);
-          padding: 100px 0;
+          padding: 0 0 36px;
           color: var(--ink);
           overflow: hidden;
         }
@@ -210,7 +210,7 @@ export default function OutcomesSection() {
         }
       `}</style>
 
-      <section className="outcomes-root" id="outcomes">
+      <section className="outcomes-root scroll-mt-28" id="outcomes">
         {/* Subtle ECG Pulse Line Background Graphic */}
         <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-[0.04]">
           <svg
@@ -226,7 +226,7 @@ export default function OutcomesSection() {
 
         <div className="mx-auto max-w-6xl px-6">
           {/* Header */}
-          <header className="mb-16 text-center">
+          <header className="mb-8 text-center">
             <div className="flex justify-center">
               
             </div>

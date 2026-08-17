@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Check } from "lucide-react";
 
@@ -182,7 +182,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="relative py-24 min-h-screen overflow-hidden flex flex-col justify-center scroll-mt-28"
+      className="relative py-16 overflow-hidden flex flex-col justify-center scroll-mt-28"
       style={{
         backgroundColor: "var(--mist-2)",
         color: "var(--midnight)",

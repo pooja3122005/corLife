@@ -62,7 +62,7 @@ export default function Solutions({ onRequestDemo }) {
   };
   return (
     <section id="who-it-s-for"
-      className="relative py-24 min-h-screen flex flex-col justify-center overflow-hidden scroll-mt-28"
+      className="relative py-16 flex flex-col overflow-hidden scroll-mt-28"
       style={{
         backgroundColor: "var(--mist-2)",
         color: "var(--ink)",
@@ -75,7 +75,7 @@ export default function Solutions({ onRequestDemo }) {
       >
         {/* Section Header */}
         <header className="mb-12 text-center">
-          <div className="w-full flex justify-start mb-6">
+          <div className="w-full flex justify-start mb-2">
           <div
             className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase mb-3 px-3 py-1 rounded-full border"
             style={{
@@ -198,7 +198,7 @@ export default function Solutions({ onRequestDemo }) {
 
                 {/* Main Card Title & Description */}
                 <h3
-                  className="text-2xl font-bold mb-3 leading-snug"
+                  className="text-xl font-bold mb-3 leading-snug"
                   style={{ fontFamily: "var(--serif)", color: "var(--navy)" }}
                 >
                   {activeSolution.title}
@@ -211,63 +211,6 @@ export default function Solutions({ onRequestDemo }) {
                   {activeSolution.description}
                 </p>
 
-                {/* Clean CTA / DEMO Block */}
-                <div
-                  className="p-5 sm:p-6 rounded-2xl relative overflow-hidden shadow-sm"
-                  style={{
-                    backgroundColor: "var(--navy)",
-                    color: "var(--white)",
-                  }}
-                >
-                  {/* Subtle Top Eyebrow */}
-                  <div
-                    className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wider mb-2"
-                    style={{ color: "var(--gold)" }}
-                  >
-                    <Sparkles className="w-3.5 h-3.5" />
-                    Ready when you are
-                  </div>
-
-                  {/* Dynamic CTA Title */}
-                  <h4
-                    className="text-lg font-semibold mb-2 leading-tight"
-                    style={{ fontFamily: "var(--serif)", color: "var(--white)" }}
-                  >
-                    {activeSolution.ctaTitle}
-                  </h4>
-
-                  {/* Lede Text */}
-                  <p
-                    className="text-xs leading-relaxed mb-5"
-                    style={{ color: "rgba(255,255,255,0.9)" }}
-                  >
-                    Book a walkthrough with our clinical team. We’ll set up a demo wearable, stream it live to the Corlife dashboard, and answer any questions.
-                  </p>
-
-                  {/* Actions */}
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                    <button
-                      onClick={handleDemoRequest}
-                      type="button"
-                      className="px-5 py-2.5 rounded-xl font-semibold text-xs transition-all shadow-md active:scale-95 text-center"
-                      style={{
-                        backgroundColor: "var(--gold)",
-                        color: "var(--midnight)",
-                      }}
-                    >
-                      Request Demo
-                    </button>
-
-                    <a
-                      href="mailto:corlifehealth@gmail.com"
-                      className="inline-flex items-center justify-center gap-1.5 text-xs transition-opacity hover:opacity-80"
-                      style={{ color: "rgba(255,255,255,0.9)" }}
-                    >
-                      <Mail className="w-3.5 h-3.5" />
-                      <span>Email us</span>
-                    </a>
-                  </div>
-                </div>
               </div>
 
               {/* Bottom Controls */}
